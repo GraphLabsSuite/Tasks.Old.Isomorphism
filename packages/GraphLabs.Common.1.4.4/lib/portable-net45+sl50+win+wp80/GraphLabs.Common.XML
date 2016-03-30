@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GraphLabs.Common</name>
+    </assembly>
+    <members>
+        <member name="T:GraphLabs.Common.DisposableWcfClientWrapper">
+            <summary> Disposable-обёртка для Wcf-клиента (чтобы не делать каждый раз Close вручную) </summary>
+        </member>
+        <member name="M:GraphLabs.Common.DisposableWcfClientWrapper.Create``1(``0)">
+            <summary> Обернуть </summary>
+            <typeparam name="T">Wcf-клиент</typeparam>
+        </member>
+        <member name="T:GraphLabs.Common.DisposableWcfClientWrapper`1">
+            <summary> Disposable-обёртка для Wcf-клиента (чтобы не делать каждый раз Close вручную) </summary>
+            <typeparam name="T">Wcf-клиент</typeparam>
+        </member>
+        <member name="P:GraphLabs.Common.DisposableWcfClientWrapper`1.Instance">
+            <summary> Экземпляр клиента </summary>
+        </member>
+        <member name="M:GraphLabs.Common.DisposableWcfClientWrapper`1.#ctor(`0)">
+            <summary> Disposable-обёртка для Wcf-клиента </summary>
+        </member>
+        <member name="M:GraphLabs.Common.DisposableWcfClientWrapper`1.Dispose">
+            <summary> Уничтожаем </summary>
+        </member>
+        <member name="M:GraphLabs.Common.DisposableWcfClientWrapper`1.Finalize">
+            <summary> Финализатор </summary>
+        </member>
+        <member name="T:GraphLabs.Common.TasksDataService.TasksDataServiceClient">
+            <summary> Сервис получения вариантов </summary>=
+        </member>
+        <member name="M:GraphLabs.Common.TasksDataService.TasksDataServiceClient.#ctor(System.String)">
+            <summary>
+            .ctor
+            </summary>
+            <param name="remoteAddress">Задание</param>
+        </member>
+        <member name="T:GraphLabs.Common.TasksDataService.TaskVariantDto">
+            <summary> Информация о варианте </summary>
+        </member>
+        <member name="T:GraphLabs.Common.TasksDataService.GetVariantCompletedEventArgs">
+            <summary> EventArgs - вариант получен </summary>
+        </member>
+        <member name="T:GraphLabs.Common.TasksDataService.ITasksDataServiceClient">
+            <summary> Сервис получения вариантов </summary>
+        </member>
+        <member name="M:GraphLabs.Common.TasksDataService.ITasksDataServiceClient.GetVariantAsync(System.Int64,System.Guid)">
+            <summary> Получить вариант </summary>
+        </member>
+        <member name="E:GraphLabs.Common.TasksDataService.ITasksDataServiceClient.GetVariantCompleted">
+            <summary> Подключение закрыто </summary>
+        </member>
+        <member name="T:GraphLabs.Common.UserActionsRegistrator.UserActionsRegistratorClient">
+            <summary> Сервис регистрации действий клиента </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsRegistrator.UserActionsRegistratorClient.#ctor(System.String)">
+            <summary>
+            .ctor
+            </summary>
+            <param name="remoteAddress">Задание</param>
+        </member>
+        <member name="T:GraphLabs.Common.UserActionsRegistrator.IUserActionsRegistratorClient">
+            <summary> Сервис регистрации действий клиента </summary>
+        </member>
+        <member name="E:GraphLabs.Common.UserActionsRegistrator.IUserActionsRegistratorClient.RegisterUserActionsCompleted">
+            <summary> Регистрация действий завершена </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsRegistrator.IUserActionsRegistratorClient.RegisterUserActionsAsync(System.Int64,System.Guid,GraphLabs.Common.UserActionsRegistrator.ActionDescription[],System.Boolean)">
+            <summary> Зарегистрировать действия </summary>
+        </member>
+        <member name="T:GraphLabs.Common.UserActionsRegistrator.ActionDescription">
+            <summary> Описание действия </summary>
+        </member>
+        <member name="T:GraphLabs.Common.UserActionsRegistrator.RegisterUserActionsCompletedEventArgs">
+            <summary> EventArgs для завершения регистрации действий </summary>
+        </member>
+        <member name="T:GraphLabs.Common.VariantDownloadedEventArgs">
+            <summary> EventArgs - Получение варианта завершено </summary>
+        </member>
+        <member name="P:GraphLabs.Common.VariantDownloadedEventArgs.Data">
+            <summary> Данные варианта </summary>
+        </member>
+        <member name="P:GraphLabs.Common.VariantDownloadedEventArgs.Number">
+            <summary> Номер варианта </summary>
+        </member>
+        <member name="P:GraphLabs.Common.VariantDownloadedEventArgs.Version">
+            <summary> Версия варианта </summary>
+        </member>
+        <member name="T:GraphLabs.Common.IUiBlockerAsyncProcessor">
+            <summary> Класс, умеющий асинхронно выполнять операции, тем не менее требующие блокировки UI</summary>
+        </member>
+        <member name="P:GraphLabs.Common.IUiBlockerAsyncProcessor.IsBusy">
+            <summary> Выполняется бокирующая UI операция </summary>
+        </member>
+        <member name="T:GraphLabs.Common.LogEventViewModel">
+            <summary> Сообщение лога </summary>
+        </member>
+        <member name="P:GraphLabs.Common.LogEventViewModel.Message">
+            <summary> Сообщение </summary>
+        </member>
+        <member name="P:GraphLabs.Common.LogEventViewModel.TimeStamp">
+            <summary> Временная отметка </summary>
+        </member>
+        <member name="P:GraphLabs.Common.LogEventViewModel.Penalty">
+            <summary> Штрафные баллы </summary>
+        </member>
+        <member name="T:GraphLabs.Common.IWcfClient">
+            <summary> Клиент WCF-сервиса </summary>
+        </member>
+        <member name="M:GraphLabs.Common.IWcfClient.CloseAsync">
+            <summary> Закрыть подключение </summary>
+        </member>
+        <member name="E:GraphLabs.Common.IWcfClient.CloseCompleted">
+            <summary> Подключение закрыто </summary>
+        </member>
+        <member name="T:GraphLabs.Common.UserActionsManager">
+            <summary> Менеджер по сохранению действий студентов (по совместительству - ViewModel для InformationBar) </summary>
+        </member>
+        <member name="F:GraphLabs.Common.UserActionsManager._dateService">
+            <summary> Сервис даты-времени </summary>
+        </member>
+        <member name="F:GraphLabs.Common.UserActionsManager._internalDisplayLog">
+            <summary> Сообщения </summary>
+        </member>
+        <member name="F:GraphLabs.Common.UserActionsManager._userActionsRegistratorClient">
+            <summary> Сервис регистрации действий студента </summary>
+        </member>
+        <member name="F:GraphLabs.Common.UserActionsManager._taskId">
+            <summary> Идентификатор задания </summary>
+        </member>
+        <member name="F:GraphLabs.Common.UserActionsManager._sessionGuid">
+            <summary> Идентификатор сессии </summary>
+        </member>
+        <member name="F:GraphLabs.Common.UserActionsManager._notRegisteredActions">
+            <summary> Ещё не зарегистрированные действия </summary>
+        </member>
+        <member name="F:GraphLabs.Common.UserActionsManager.StartingScore">
+            <summary> Начальный балл </summary>
+        </member>
+        <member name="P:GraphLabs.Common.UserActionsManager.SendReportOnEveryAction">
+            <summary> Отправлять отчёт после каждого действия? По-умолчанию false, т.е. отправка отчёта происходит только при совершении ошибки. </summary>
+        </member>
+        <member name="P:GraphLabs.Common.UserActionsManager.Log">
+            <summary> Сообщения </summary>
+        </member>
+        <member name="P:GraphLabs.Common.UserActionsManager.Score">
+            <summary> Текущий балл </summary>
+        </member>
+        <member name="P:GraphLabs.Common.UserActionsManager.IsBusy">
+            <summary> Идёт отправка данных? </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsManager.#ctor(System.Int64,System.Guid,GraphLabs.Common.DisposableWcfClientWrapper{GraphLabs.Common.UserActionsRegistrator.IUserActionsRegistratorClient},GraphLabs.Utils.Services.IDateTimeService)">
+            <summary> ViewModel для панели информации </summary>
+        </member>
+        <member name="F:GraphLabs.Common.UserActionsManager._isTaskFinished">
+            <summary> Задание завершено? </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsManager.CheckTaskIsNotFinished">
+            <summary> Проверяет, что задание ещё не завершено </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsManager.RegisterInfo(System.String)">
+            <summary> Добавить событие </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsManager.RegisterMistake(System.String,System.Int16)">
+            <summary> Добавить ошибку </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsManager.ReportThatTaskFinished">
+            <summary> Отправить сообщение о том, что задание завершено </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsManager.AddActionInternal(System.String,System.Int16)">
+            <summary> Ставит задание в буфер для последующей отправки </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsManager.SendReport(System.Boolean)">
+            <summary> Принудительно отправляет действия </summary>
+        </member>
+        <member name="E:GraphLabs.Common.UserActionsManager.PropertyChanged">
+            <summary> Occurs when a property value changes. </summary>
+        </member>
+        <member name="M:GraphLabs.Common.UserActionsManager.OnPropertyChanged(System.String)">
+            <summary> Occurs when a property value changes. </summary>
+        </member>
+        <member name="T:GraphLabs.Common.VariantProvider">
+            <summary> Поставщик вариантов задания </summary>
+        </member>
+        <member name="F:GraphLabs.Common.VariantProvider._tasksDataServiceClient">
+            <summary> Сервис получения вариантов </summary>
+        </member>
+        <member name="E:GraphLabs.Common.VariantProvider.PropertyChanged">
+            <summary> Occurs when a property value changes. </summary>
+        </member>
+        <member name="M:GraphLabs.Common.VariantProvider.OnPropertyChanged(System.String)">
+            <summary> Occurs when a property value changes. </summary>
+        </member>
+        <member name="P:GraphLabs.Common.VariantProvider.IsBusy">
+            <summary> Выполняется бокирующая UI операция </summary>
+        </member>
+        <member name="M:GraphLabs.Common.VariantProvider.#ctor(System.Int64,System.Guid,System.Version[],GraphLabs.Common.DisposableWcfClientWrapper{GraphLabs.Common.TasksDataService.ITasksDataServiceClient})">
+            <summary> Поставщик вариантов задания </summary>
+            <param name="taskId">Id задания</param>
+            <param name="sessionGuid">Guid сессии</param>
+            <param name="allowedVariantGenerationVersions">Допустимые версии генераторов. АХТУНГ! Имеет смысл только мажорная часть версии!</param>
+            <param name="client">Клиент</param>
+        </member>
+        <member name="M:GraphLabs.Common.VariantProvider.DownloadVariantAsync">
+            <summary> Запустить получение варианта </summary>
+        </member>
+        <member name="E:GraphLabs.Common.VariantProvider.VariantDownloaded">
+            <summary> Вариант загружен </summary>
+        </member>
+        <member name="M:GraphLabs.Common.VariantProvider.OnVariantDownloaded(System.Byte[],System.String,System.Nullable{System.Int64})">
+            <summary> Вариант загружен. Событие может быть вызвано не из UI-потока </summary>
+        </member>
+    </members>
+</doc>
