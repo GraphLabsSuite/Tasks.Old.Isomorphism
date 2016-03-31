@@ -13,26 +13,42 @@ namespace DebugVariantDataGenerator
     /// </summary>
     class Program
     {
-        public static byte[] GetSerializedGraph()
+        public static byte[] GetSerializedVariant()
         {
-            var graph = DirectedGraph.CreateEmpty(7);
-            graph.AddEdge(new DirectedEdge(graph.Vertices[0], graph.Vertices[5]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[1], graph.Vertices[0]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[1], graph.Vertices[5]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[2], graph.Vertices[1]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[2], graph.Vertices[5]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[3], graph.Vertices[4]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[4], graph.Vertices[2]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[4], graph.Vertices[3]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[5], graph.Vertices[6]));
-            graph.AddEdge(new DirectedEdge(graph.Vertices[6], graph.Vertices[4]));
+            var graph1 = DirectedGraph.CreateEmpty(7);
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[0], graph1.Vertices[5]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[1], graph1.Vertices[0]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[1], graph1.Vertices[5]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[2], graph1.Vertices[1]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[2], graph1.Vertices[5]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[3], graph1.Vertices[4]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[4], graph1.Vertices[2]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[4], graph1.Vertices[3]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[5], graph1.Vertices[6]));
+            graph1.AddEdge(new DirectedEdge(graph1.Vertices[6], graph1.Vertices[4]));
 
-            return GraphSerializer.Serialize(graph);
+            var graph2 = DirectedGraph.CreateEmpty(7);
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[0], graph2.Vertices[5]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[1], graph2.Vertices[0]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[1], graph2.Vertices[5]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[2], graph2.Vertices[1]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[2], graph2.Vertices[5]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[3], graph2.Vertices[4]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[4], graph2.Vertices[2]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[4], graph2.Vertices[3]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[5], graph2.Vertices[6]));
+            graph2.AddEdge(new DirectedEdge(graph2.Vertices[6], graph2.Vertices[4]));
+
+            return VariantSerializer.Serialize(new IGraph[]
+            {
+                graph1,
+                graph2
+            });
         }
 
         static void Main(string[] args)
         {
-            File.WriteAllBytes(@"..\..\..\GraphLabs.Tasks.Template\Debug\DebugVariantData.bin", GetSerializedGraph());
+            File.WriteAllBytes(@"..\..\..\GraphLabs.Tasks.Template\Debug\DebugVariantData.bin", GetSerializedVariant());
         }
     }
 }
