@@ -11,7 +11,7 @@
             x:Name="BackgroundVisualizer"
             Canvas.ZIndex="-1"
             VisualizationAlgorithm="Circle"
-            IsMouseVerticesMovingEnabled="False"
+            IsMouseVerticesMovingEnabled="True"
             DefaultVertexBackground="DodgerBlue"
             Foreground="Transparent"
             DefaultVertexRadius="20"

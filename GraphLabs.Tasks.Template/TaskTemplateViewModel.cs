@@ -2,8 +2,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using GraphLabs.Common;
 using GraphLabs.Common.Utils;
 using GraphLabs.CommonUI;
@@ -22,8 +20,6 @@ namespace GraphLabs.Tasks.Template
         {
             /// <summary> Пусто </summary>
             Nothing,
-            /// <summary> Добавление рёбер </summary>
-            EdgesAdding
         }
 
         /// <summary> Текущее состояние </summary>
@@ -99,7 +95,7 @@ namespace GraphLabs.Tasks.Template
             ExpressionUtility.NameForMember((TaskTemplateViewModel m) => m.WorkspaceGraphVisibility),
             typeof(Visibility),
             typeof(TaskTemplateViewModel),
-            new PropertyMetadata(Visibility.Collapsed));
+            new PropertyMetadata(Visibility.Visible));
 
         /// <summary> Радиус </summary>
         public static readonly DependencyProperty DefaultVertexRadiusProperty =

@@ -12,10 +12,10 @@ namespace GraphLabs.Tasks.Template
 {
     public class IsomorphismGraphsVisualizer : GraphVisualizer
     {
-        private IsomorphismVisualizer _parent;
-
         /// <summary> Залипающий граф </summary>
         public ObservableCollection<Point> Glue { get; set; }
+
+        private IsomorphismVisualizer _parent;
 
         /// <summary> Оверрайд для перемещения вершин мышкой. Нужен для залипания </summary>
         protected override void MouseMoveVertex(object sender, MouseEventArgs mouseEventArgs)
@@ -53,6 +53,16 @@ namespace GraphLabs.Tasks.Template
         public void SetParent(IsomorphismVisualizer p)
         {
             _parent = p;
+        }
+
+        public void UpdateColors()
+        {
+            Vertices.ForEach(v =>
+            {
+                v.Background = Glue.Any(t => v.X == t.X && v.Y == t.Y)
+                    ? new SolidColorBrush(Colors.White)
+                    : DefaultVertexBackground;
+            });
         }
 
         /// <summary> Коллекция координат вершин графа </summary>

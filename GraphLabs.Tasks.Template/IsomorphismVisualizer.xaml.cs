@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Castle.Core.Internal;
 using GraphLabs.Graphs;
 
 /// <summary> Комбинация визуализаторов для изоморфизма </summary>
@@ -18,6 +19,8 @@ namespace GraphLabs.Tasks.Template
             BackgroundVisualizer.SetParent(this);
         }
 
+        #region Рабочий граф
+
         /// <summary> Рабочий граф </summary>
         public static DependencyProperty WorkspaceGraphProperty =
             DependencyProperty.Register(
@@ -26,31 +29,13 @@ namespace GraphLabs.Tasks.Template
                 typeof(IsomorphismVisualizer),
                 new PropertyMetadata(WorkspaceGraphChanged));
 
-        /// <summary> Видимость рабочего графа </summary>
-        public static DependencyProperty WorkspaceGraphVisibilityProperty = 
-            DependencyProperty.Register(
-                "WorkspaceGraphVisibility",
-                typeof(Visibility),
-                typeof(IsomorphismVisualizer),
-                new PropertyMetadata(default(Visibility)));
-
-        public Visibility WorkspaceGraphVisibility
-        {
-            get
-            {
-                return (Visibility)GetValue(VisibilityProperty);
-            }
-            set
-            {
-                SetValue(VisibilityProperty, value);
-                WorkspaceVisualizer.Visibility = value;
-            }
-        }
-
         /// <summary> Рабочий граф </summary>
         public IObservableGraph WorkspaceGraph
         {
-            get { return (IObservableGraph)GetValue(WorkspaceGraphProperty); }
+            get
+            {
+                return (IObservableGraph)GetValue(WorkspaceGraphProperty);
+            }
             set
             {
                 UpdateLayout();
@@ -66,7 +51,11 @@ namespace GraphLabs.Tasks.Template
             }
         }
 
-        /// <summary> Граф-прототип </summary>
+        #endregion
+
+        #region Граф на бэкграунде
+
+        /// <summary> Граф на бэкграунде </summary>
         public static DependencyProperty BackgroundGraphProperty =
             DependencyProperty.Register(
                 "BackgroundGraph",
@@ -77,7 +66,10 @@ namespace GraphLabs.Tasks.Template
         /// <summary> Граф на бэкграунде </summary>
         public IObservableGraph BackgroundGraph
         {
-            get { return (IObservableGraph)GetValue(BackgroundGraphProperty); }
+            get
+            {
+                return (IObservableGraph)GetValue(BackgroundGraphProperty);
+            }
             set
             {
                 UpdateLayout();
@@ -92,6 +84,39 @@ namespace GraphLabs.Tasks.Template
             i.BackgroundVisualizer.Graph = (IObservableGraph)e.NewValue;
             i.WorkspaceVisualizer.Glue = i.BackgroundVisualizer.GetVertexesCoordinates();
             i.UpdateLayout();
+        }
+
+        #endregion
+
+        /// <summary> Видимость рабочего графа </summary>
+        public static DependencyProperty WorkspaceGraphVisibilityProperty =
+            DependencyProperty.Register(
+                "WorkspaceGraphVisibility",
+                typeof(Visibility),
+                typeof(IsomorphismVisualizer),
+                new PropertyMetadata(WorkspaceGraphVisibilityChanged));
+
+        /// <summary> Видимость рабочего графа </summary>
+        public Visibility WorkspaceGraphVisibility
+        {
+            get
+            {
+                return (Visibility)GetValue(VisibilityProperty);
+            }
+            set
+            {
+                SetValue(VisibilityProperty, value);
+            }
+        }
+
+        private static void WorkspaceGraphVisibilityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue == null) return;
+            var i = (IsomorphismVisualizer) d;
+            i.WorkspaceVisualizer.Visibility = (Visibility) e.NewValue;
+            if (((Visibility) e.NewValue) == Visibility.Collapsed) return;
+            i.WorkspaceVisualizer.Glue = i.BackgroundVisualizer.GetVertexesCoordinates();
+            i.WorkspaceVisualizer.UpdateColors();
         }
 
         /// <summary> Проверка решения </summary>

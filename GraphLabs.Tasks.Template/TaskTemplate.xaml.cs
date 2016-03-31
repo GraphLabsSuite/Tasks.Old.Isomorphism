@@ -17,20 +17,12 @@ namespace GraphLabs.Tasks.Template
         private void OnVertexClicked(VertexClickEventArgs e)
         {
             var handler = VertexClicked;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            handler?.Invoke(this, e);
         }
 
         private void OnVertexClick(object sender, VertexClickEventArgs e)
         {
             OnVertexClicked(e);
-        }
-
-        private void Visualizer_Left_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            new HelpDialog(Strings.Strings_RU.stage1Help).Show();
         }
     }
 }

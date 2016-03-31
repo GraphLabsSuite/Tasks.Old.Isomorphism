@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using Castle.Core.Internal;
 using GraphLabs.CommonUI.Controls.ViewModels;
-using GraphLabs.Graphs;
 
 namespace GraphLabs.Tasks.Template
 {
@@ -29,14 +25,13 @@ namespace GraphLabs.Tasks.Template
 
             #region Третий этап
             #region Видимость
-
             var vis = true;
 
             var phase3VisCommand = new ToolBarInstantCommand(
                 () =>
                 {
-                    WorkspaceGraphVisibility = vis ? Visibility.Visible : Visibility.Collapsed;
                     vis = !vis;
+                    WorkspaceGraphVisibility = vis ? Visibility.Visible : Visibility.Collapsed;
                 },
                 () => _state == State.Nothing
                 )
