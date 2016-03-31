@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using GraphLabs.CommonUI.Controls.ViewModels;
 
@@ -56,14 +57,24 @@ namespace GraphLabs.Tasks.Template
             var phase3Command = new ToolBarInstantCommand(
                 () =>
                 {
-                    if (WorkspaceGraph.Vertices[0].Name != "True")
+                    var dialog = new AnswerDialog(IsomorphismResult);
+                    dialog.Closed += (sender, args) =>
                     {
-                        UserActionsManager.RegisterMistake(Strings.Strings_RU.stage3Mistake1, 10);
-                    }
-                    else
-                    {
-                        UserActionsManager.RegisterInfo(Strings.Strings_RU.stage3Done);
-                    }
+                        if (dialog.DialogResult.HasValue && dialog.DialogResult.Value && dialog.Answer)
+                        {
+                            UserActionsManager.SendReportOnEveryAction = true;
+                            UserActionsManager.RegisterInfo("Ответ пользователя: Графы изоморфны");
+                            UserActionsManager.ReportThatTaskFinished();
+                        }
+                        if (dialog.DialogResult.HasValue && dialog.DialogResult.Value && !dialog.Answer)
+                        {
+                            UserActionsManager.SendReportOnEveryAction = true;
+                            UserActionsManager.RegisterInfo("Ответ пользователя: Графы неизоморфны.\n" + dialog.Message);
+                            UserActionsManager.ReportThatTaskFinished();
+                        }
+                    };
+                    dialog.Show();
+
                 },
                 () => _state == State.Nothing
                 )

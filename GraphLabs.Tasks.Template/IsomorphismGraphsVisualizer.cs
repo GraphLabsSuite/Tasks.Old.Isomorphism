@@ -42,13 +42,6 @@ namespace GraphLabs.Tasks.Template
             }
         }
 
-        /// <summary> "Отпустить" перемещаемую вершину </summary>
-        protected override void ReleaseVertex(object sender, MouseButtonEventArgs e)
-        {
-            base.ReleaseVertex(sender, e);
-            Graph.Vertices[0].Rename(_parent.Check().ToString());
-        }
-
         /// <summary> Установить родительский контейнер </summary>
         public void SetParent(IsomorphismVisualizer p)
         {

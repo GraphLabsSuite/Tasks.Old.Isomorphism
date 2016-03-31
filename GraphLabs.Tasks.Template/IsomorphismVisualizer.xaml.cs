@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Castle.Core.Internal;
 using GraphLabs.Graphs;
 
 /// <summary> Комбинация визуализаторов для изоморфизма </summary>
@@ -88,6 +87,8 @@ namespace GraphLabs.Tasks.Template
 
         #endregion
 
+        #region Видимость
+
         /// <summary> Видимость рабочего графа </summary>
         public static DependencyProperty WorkspaceGraphVisibilityProperty =
             DependencyProperty.Register(
@@ -119,34 +120,46 @@ namespace GraphLabs.Tasks.Template
             i.WorkspaceVisualizer.UpdateColors();
         }
 
-        /// <summary> Проверка решения </summary>
-        public bool Check()
+        #endregion
+
+        /// <summary> Совмещены ли два графа? </summary>
+        public static DependencyProperty IsomorphismResultProperty =
+            DependencyProperty.Register(
+                "IsomorphismResult",
+                typeof(bool),
+                typeof(IsomorphismVisualizer),
+                new PropertyMetadata(false));
+        
+        public bool IsomorphismResult
         {
-            if (BackgroundVisualizer.Graph == null ||
+            get
+            {
+                if (BackgroundVisualizer.Graph == null ||
                     WorkspaceVisualizer.Graph == null ||
                     BackgroundVisualizer.Graph.VerticesCount != WorkspaceVisualizer.Graph.VerticesCount ||
                     BackgroundVisualizer.Graph.EdgesCount != WorkspaceVisualizer.Graph.EdgesCount)
-                return false;
-            var result = true;
-            var vertexesOrder = new ObservableCollection<Vertex>();
-            var bgPoints = BackgroundVisualizer.GetVertexesCoordinates();
-            var wsPoints = WorkspaceVisualizer.GetVertexesCoordinates();
-            var bgGraph = BackgroundVisualizer.Graph;
-            var wsGraph = WorkspaceVisualizer.Graph;
-            for (var i = 0; i < bgGraph.VerticesCount; i++)
-            {
-                var point = wsPoints.SingleOrDefault(p => p.X == bgPoints[i].X && p.Y == bgPoints[i].Y);
-                if (point == default(Point))
                     return false;
-                var index = wsPoints.IndexOf(point);
-                vertexesOrder.Add((Vertex)wsGraph.Vertices[index]);
+                var result = true;
+                var vertexesOrder = new ObservableCollection<Vertex>();
+                var bgPoints = BackgroundVisualizer.GetVertexesCoordinates();
+                var wsPoints = WorkspaceVisualizer.GetVertexesCoordinates();
+                var bgGraph = BackgroundVisualizer.Graph;
+                var wsGraph = WorkspaceVisualizer.Graph;
+                for (var i = 0; i < bgGraph.VerticesCount; i++)
+                {
+                    var point = wsPoints.SingleOrDefault(p => p.X == bgPoints[i].X && p.Y == bgPoints[i].Y);
+                    if (point == default(Point))
+                        return false;
+                    var index = wsPoints.IndexOf(point);
+                    vertexesOrder.Add((Vertex)wsGraph.Vertices[index]);
+                }
+                for (var i = 0; i < bgGraph.VerticesCount; i++)
+                    for (var j = 0; j < bgGraph.VerticesCount; j++)
+                        if (i != j)
+                            result &= bgGraph[bgGraph.Vertices[i], bgGraph.Vertices[j]] != null ||
+                                      wsGraph[vertexesOrder[i], vertexesOrder[j]] == null;
+                return result;
             }
-            for (var i = 0; i < bgGraph.VerticesCount; i++)
-                for (var j = 0; j < bgGraph.VerticesCount; j++)
-                    if (i != j)
-                        result &= bgGraph[bgGraph.Vertices[i], bgGraph.Vertices[j]] != null ||
-                                  wsGraph[vertexesOrder[i], vertexesOrder[j]] == null;
-            return result;
         }
     }
 }

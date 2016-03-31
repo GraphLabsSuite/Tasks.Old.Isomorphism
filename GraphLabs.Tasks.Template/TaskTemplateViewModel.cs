@@ -72,6 +72,14 @@ namespace GraphLabs.Tasks.Template
             typeof(IGraph),
             typeof(TaskTemplateViewModel),
             new PropertyMetadata(default(IGraph)));
+
+        /// <summary> Изоморфизм </summary>
+        public static readonly DependencyProperty IsomorphismResultProperty =
+            DependencyProperty.Register(
+            ExpressionUtility.NameForMember((TaskTemplateViewModel m) => m.IsomorphismResult),
+            typeof(bool),
+            typeof(TaskTemplateViewModel),
+            new PropertyMetadata(false));
         
         ///<summary> Фоновый граф для изоморфизма </summary>
         public static readonly DependencyProperty BackgroundGraphProperty =
@@ -138,6 +146,9 @@ namespace GraphLabs.Tasks.Template
             get { return (IGraph)GetValue(GivenGraphProperty); }
             set { SetValue(GivenGraphProperty, value); }
         }
+
+        /// <summary> Изоморфизм </summary>
+        public bool IsomorphismResult => (bool)GetValue(IsomorphismResultProperty);
 
         /// <summary> Фоновый граф для изоморфизма </summary>
         public IGraph BackgroundGraph
