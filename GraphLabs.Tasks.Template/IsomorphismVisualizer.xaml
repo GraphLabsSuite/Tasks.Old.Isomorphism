@@ -13,7 +13,6 @@
             VisualizationAlgorithm="Circle"
             IsMouseVerticesMovingEnabled="True"
             DefaultVertexBackground="DodgerBlue"
-            Foreground="Transparent"
             DefaultVertexRadius="20"
             DefaultEdgeStrokeThickness="4"
             DefaultEdgeStroke="DodgerBlue"/>
@@ -23,7 +22,6 @@
             VisualizationAlgorithm="RandomPositions"
             IsMouseVerticesMovingEnabled="True"
             DefaultVertexBackground="GreenYellow"
-            Foreground="Transparent"
             DefaultVertexRadius="20"
             DefaultEdgeStrokeThickness="2"
             DefaultEdgeStroke="GreenYellow"/>

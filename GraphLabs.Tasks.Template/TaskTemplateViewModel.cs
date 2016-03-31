@@ -148,7 +148,11 @@ namespace GraphLabs.Tasks.Template
         }
 
         /// <summary> Изоморфизм </summary>
-        public bool IsomorphismResult => (bool)GetValue(IsomorphismResultProperty);
+        public bool IsomorphismResult
+        {
+            get { return (bool) GetValue(IsomorphismResultProperty); }
+            set { SetValue(IsomorphismResultProperty, value); }
+        }
 
         /// <summary> Фоновый граф для изоморфизма </summary>
         public IGraph BackgroundGraph

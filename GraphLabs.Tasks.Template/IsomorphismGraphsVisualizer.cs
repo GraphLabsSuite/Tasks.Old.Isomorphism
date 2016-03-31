@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -12,10 +14,10 @@ namespace GraphLabs.Tasks.Template
 {
     public class IsomorphismGraphsVisualizer : GraphVisualizer
     {
+        public event EventHandler VertexReleased;
+
         /// <summary> Залипающий граф </summary>
         public ObservableCollection<Point> Glue { get; set; }
-
-        private IsomorphismVisualizer _parent;
 
         /// <summary> Оверрайд для перемещения вершин мышкой. Нужен для залипания </summary>
         protected override void MouseMoveVertex(object sender, MouseEventArgs mouseEventArgs)
@@ -42,10 +44,11 @@ namespace GraphLabs.Tasks.Template
             }
         }
 
-        /// <summary> Установить родительский контейнер </summary>
-        public void SetParent(IsomorphismVisualizer p)
+        protected override void ReleaseVertex(object sender, MouseButtonEventArgs e)
         {
-            _parent = p;
+            base.ReleaseVertex(sender, e);
+            VertexReleased?.Invoke(sender, e);
+            Interlocked.CompareExchange(ref VertexReleased, null, null);
         }
 
         public void UpdateColors()
