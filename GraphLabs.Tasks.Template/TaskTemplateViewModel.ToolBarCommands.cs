@@ -38,7 +38,7 @@ namespace GraphLabs.Tasks.Template
                 )
             {
                 Description = "Скрыть / Показать слой зелёного графа",
-                Image = new BitmapImage(GetImageUri("Info.png"))
+                Image = new BitmapImage(GetImageUri("HideGreen.png"))
             };
             #endregion
 
