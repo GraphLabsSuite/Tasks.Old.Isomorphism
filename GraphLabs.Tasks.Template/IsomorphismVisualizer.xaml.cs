@@ -11,15 +11,13 @@ namespace GraphLabs.Tasks.Template
 {
     public partial class IsomorphismVisualizer : UserControl
     {
-        private bool _result;
-
         /// <summary> Визуализатор для изоморфизма </summary>
         public IsomorphismVisualizer()
         {
             InitializeComponent();
             WorkspaceVisualizer.VertexReleased += (s, e) =>
             {
-                _result = Calculate();
+                IsomorphismResult = Calculate();
             };
         }
 

@@ -47,8 +47,8 @@ namespace GraphLabs.Tasks.Template
         protected override void ReleaseVertex(object sender, MouseButtonEventArgs e)
         {
             base.ReleaseVertex(sender, e);
-            VertexReleased?.Invoke(sender, e);
-            Interlocked.CompareExchange(ref VertexReleased, null, null);
+            Interlocked.CompareExchange(ref VertexReleased, null, null)
+                ?.Invoke(sender, e);
         }
 
         public void UpdateColors()

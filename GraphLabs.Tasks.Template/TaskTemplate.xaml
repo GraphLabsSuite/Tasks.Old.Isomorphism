@@ -68,7 +68,7 @@
                   Column="2">
                 <template:IsomorphismVisualizer
                     WorkspaceGraphVisibility="{Binding WorkspaceGraphVisibility}"
-                    IsomorphismResult="{Binding IsomorphismResult}"
+                    IsomorphismResult="{Binding IsomorphismResult, Mode=TwoWay}"
                     BackgroundGraph="{Binding BackgroundGraph}"
                     WorkspaceGraph="{Binding WorkspaceGraph}"/>
             </Grid>
