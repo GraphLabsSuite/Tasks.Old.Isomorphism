@@ -8,7 +8,7 @@ namespace DebugVariantDataGenerator
     /// <summary>
     /// Это генератор данных тестового варианта для отладки на сайте.
     /// Если не получается запустить его из-за ошибки вида
-    /// "Could not copy the file "...\GraphLabs.Tasks.Template\Properties\DebugVariantData.bin" because it was not found.",
+    /// "Could not copy the file "...\GraphLabs.Tasks.Isomorphism\Properties\DebugVariantData.bin" because it was not found.",
     /// то нужно временно выгрузить проект модуля-задания (правой кнопкой по проекту -> UnloadProject)
     /// </summary>
     class Program
@@ -48,7 +48,7 @@ namespace DebugVariantDataGenerator
 
         static void Main(string[] args)
         {
-            File.WriteAllBytes(@"..\..\..\GraphLabs.Tasks.Template\Debug\DebugVariantData.bin", GetSerializedVariant());
+            File.WriteAllBytes(@"..\..\..\GraphLabs.Tasks.Isomorphism\Debug\DebugVariantData.bin", GetSerializedVariant());
         }
     }
 }

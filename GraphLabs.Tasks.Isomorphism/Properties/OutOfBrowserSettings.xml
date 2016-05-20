@@ -1,0 +1,10 @@
+<OutOfBrowserSettings ShortName="Приложение Лабораторная Изоморфизм" EnableGPUAcceleration="True" ShowInstallMenuItem="False">
+  <OutOfBrowserSettings.Blurb>Приложение Tasks.Isomorphism на рабочем столе: дома, на работе, в пути.</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.WindowSettings>
+    <WindowSettings Title="Приложение GraphLabs.Tasks.Isomorphism" WindowStyle="BorderlessRoundCornersWindow" />
+  </OutOfBrowserSettings.WindowSettings>
+  <OutOfBrowserSettings.SecuritySettings>
+    <SecuritySettings ElevatedPermissions="NotRequired" />
+  </OutOfBrowserSettings.SecuritySettings>
+  <OutOfBrowserSettings.Icons />
+</OutOfBrowserSettings>
