@@ -65,12 +65,14 @@ namespace GraphLabs.Tasks.Template
                             UserActionsManager.SendReportOnEveryAction = true;
                             UserActionsManager.RegisterInfo("Ответ пользователя: Графы изоморфны");
                             UserActionsManager.ReportThatTaskFinished();
+							TransferToNextTask();
                         }
                         if (dialog.DialogResult.HasValue && dialog.DialogResult.Value && !dialog.Answer)
                         {
                             UserActionsManager.SendReportOnEveryAction = true;
                             UserActionsManager.RegisterInfo("Ответ пользователя: Графы неизоморфны.\n" + dialog.Message);
                             UserActionsManager.ReportThatTaskFinished();
+							TransferToNextTask();
                         }
                     };
                     dialog.Show();
