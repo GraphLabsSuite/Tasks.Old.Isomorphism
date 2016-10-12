@@ -107,7 +107,7 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\DebugWithSite\</OutputPath>
     <DefineConstants>TRACE;DEBUG;SILVERLIGHT; CONTRACTS_FULL</DefineConstants>
-    <DocumentationFile>Bin\Debug\GraphLabs.Tasks.Template.xml</DocumentationFile>
+    <DocumentationFile>Bin\Debug\GraphLabs.Tasks.Isomorphism.xml</DocumentationFile>
     <WarningLevel>0</WarningLevel>
     <NoStdLib>true</NoStdLib>
     <DebugType>full</DebugType>
