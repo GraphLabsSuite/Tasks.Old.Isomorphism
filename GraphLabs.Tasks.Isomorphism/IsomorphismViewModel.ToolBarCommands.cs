@@ -63,13 +63,14 @@ namespace GraphLabs.Tasks.Isomorphism
                         {
                             UserActionsManager.SendReportOnEveryAction = true;
                             UserActionsManager.RegisterInfo("Ответ пользователя: Графы изоморфны");
+                            UserActionsManager.ReportThatTaskFinished();
                         }
                         if (dialog.DialogResult.HasValue && dialog.DialogResult.Value && !dialog.Answer)
                         {
                             UserActionsManager.SendReportOnEveryAction = true;
                             UserActionsManager.RegisterInfo("Ответ пользователя: Графы неизоморфны.\n" + dialog.Message);
+                            UserActionsManager.ReportThatTaskFinished();
                         }
-                        UserActionsManager.ReportThatTaskFinished();
                     };
                     dialog.Show();
 
