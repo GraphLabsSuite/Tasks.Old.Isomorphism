@@ -221,9 +221,15 @@
 
 Баллы снимаются при попытке завершить этап при неверно совмещённых графах.</value>
   </data>
+  <data name="stage3HelpCall" xml:space="preserve">
+    <value>Изоморфизм. Этап 3. Вызов справки</value>
+  </data>
   <data name="stage3Mistake1" xml:space="preserve">
     <value>Вершины совмещены неверно</value>
     <comment>M</comment>
+  </data>
+  <data name="stage3ThunderCall" xml:space="preserve">
+    <value>Изоморфизм. Этап 3. Вызов "молнии"</value>
   </data>
   <data name="subgraph" xml:space="preserve">
     <value>Подграф</value>

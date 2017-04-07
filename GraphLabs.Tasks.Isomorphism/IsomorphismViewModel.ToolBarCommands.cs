@@ -43,7 +43,11 @@ namespace GraphLabs.Tasks.Isomorphism
 
             #region Справка
             var phase3HelpCommand = new ToolBarInstantCommand(
-                () => new SimpleDialog("Справка", Strings.Strings_RU.stage3Help).Show(),
+                () =>
+                {
+                    new SimpleDialog("Справка", Strings.Strings_RU.stage3Help).Show();
+                    UserActionsManager.RegisterInfo(Strings.Strings_RU.stage3HelpCall);
+                },
                 () => _state == State.Nothing
                 )
             {

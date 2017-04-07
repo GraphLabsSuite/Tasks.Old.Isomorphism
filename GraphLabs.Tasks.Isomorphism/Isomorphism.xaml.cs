@@ -1,4 +1,6 @@
 ﻿using System;
+using GraphLabs.Common;
+using GraphLabs.CommonUI;
 using GraphLabs.Graphs.UIComponents.Visualization;
 
 namespace GraphLabs.Tasks.Isomorphism
@@ -16,8 +18,10 @@ namespace GraphLabs.Tasks.Isomorphism
 
         private void OnVertexClicked(VertexClickEventArgs e)
         {
+           // UserActionsManager.
             var handler = VertexClicked;
             handler?.Invoke(this, e);
+            
         }
 
         private void OnVertexClick(object sender, VertexClickEventArgs e)
