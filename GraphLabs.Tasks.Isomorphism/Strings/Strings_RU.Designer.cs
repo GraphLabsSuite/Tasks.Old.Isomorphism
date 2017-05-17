@@ -259,6 +259,24 @@ namespace GraphLabs.Tasks.Isomorphism.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Изоморфизм. Этап 3. Ответ пользователя: графы неизоморфны. Объяснение: .
+        /// </summary>
+        internal static string stage3AnswerNo {
+            get {
+                return ResourceManager.GetString("stage3AnswerNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Изоморфизм. Этап 3. Ответ пользователя: графы изоморфны..
+        /// </summary>
+        internal static string stage3AnswerYes {
+            get {
+                return ResourceManager.GetString("stage3AnswerYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Третий этап завершён.
         /// </summary>
         internal static string stage3Done {
@@ -298,15 +316,6 @@ namespace GraphLabs.Tasks.Isomorphism.Strings {
         internal static string stage3HelpCall {
             get {
                 return ResourceManager.GetString("stage3HelpCall", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Вершины совмещены неверно.
-        /// </summary>
-        internal static string stage3Mistake1 {
-            get {
-                return ResourceManager.GetString("stage3Mistake1", resourceCulture);
             }
         }
         

@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using GraphLabs.CommonUI.Controls;
 using GraphLabs.CommonUI.Controls.ViewModels;
+using System.Diagnostics;
 
 namespace GraphLabs.Tasks.Isomorphism
 {
@@ -46,7 +47,6 @@ namespace GraphLabs.Tasks.Isomorphism
                 () =>
                 {
                     new SimpleDialog("Справка", Strings.Strings_RU.stage3Help).Show();
-                    UserActionsManager.RegisterInfo(Strings.Strings_RU.stage3HelpCall);
                 },
                 () => _state == State.Nothing
                 )
@@ -66,13 +66,13 @@ namespace GraphLabs.Tasks.Isomorphism
                         if (dialog.DialogResult.HasValue && dialog.DialogResult.Value && dialog.Answer)
                         {
                             UserActionsManager.SendReportOnEveryAction = true;
-                            UserActionsManager.RegisterInfo("Ответ пользователя: Графы изоморфны");
+                            UserActionsManager.RegisterInfo(Strings.Strings_RU.stage3AnswerYes);
                             UserActionsManager.ReportThatTaskFinished();
                         }
                         if (dialog.DialogResult.HasValue && dialog.DialogResult.Value && !dialog.Answer)
                         {
                             UserActionsManager.SendReportOnEveryAction = true;
-                            UserActionsManager.RegisterInfo("Ответ пользователя: Графы неизоморфны.\n" + dialog.Message);
+                            UserActionsManager.RegisterInfo(Strings.Strings_RU.stage3AnswerNo + dialog.Message);
                             UserActionsManager.ReportThatTaskFinished();
                         }
                     };

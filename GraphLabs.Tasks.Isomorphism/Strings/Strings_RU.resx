@@ -204,6 +204,13 @@
     <value>Подграф добавлен в коллекцию</value>
     <comment>M</comment>
   </data>
+  <data name="stage3AnswerNo" xml:space="preserve">
+    <value>Изоморфизм. Этап 3. Ответ пользователя: графы неизоморфны. Объяснение: </value>
+  </data>
+  <data name="stage3AnswerYes" xml:space="preserve">
+    <value>Изоморфизм. Этап 3. Ответ пользователя: графы изоморфны.</value>
+    <comment>M</comment>
+  </data>
   <data name="stage3Done" xml:space="preserve">
     <value>Третий этап завершён</value>
     <comment>M</comment>
@@ -223,10 +230,6 @@
   </data>
   <data name="stage3HelpCall" xml:space="preserve">
     <value>Изоморфизм. Этап 3. Вызов справки</value>
-  </data>
-  <data name="stage3Mistake1" xml:space="preserve">
-    <value>Вершины совмещены неверно</value>
-    <comment>M</comment>
   </data>
   <data name="stage3ThunderCall" xml:space="preserve">
     <value>Изоморфизм. Этап 3. Вызов "молнии"</value>
